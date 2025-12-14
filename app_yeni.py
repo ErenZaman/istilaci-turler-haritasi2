@@ -60,9 +60,10 @@ st.markdown("""
         color: #667eea;
     }
     .stat-label {
-        color: #666;
+        color: #333;
         font-size: 0.9rem;
         margin-top: 0.5rem;
+        font-weight: 500;
     }
     .taxonomy-card {
         background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
@@ -70,6 +71,12 @@ st.markdown("""
         border-radius: 8px;
         margin: 0.5rem 0;
         border-left: 3px solid #667eea;
+    }
+    .taxonomy-card strong {
+        color: #2d3748;
+    }
+    .taxonomy-card span {
+        color: #1a202c;
     }
     .stTabs [data-baseweb="tab-list"] {
         gap: 2rem;
@@ -447,7 +454,7 @@ def main():
             
             for label, col in taxonomy_items:
                 if col in species_row and species_row[col]:
-                    st.markdown(f"**{label}:** {species_row[col]}")
+                    st.markdown(f"**{label}:** <span style='color: #1a202c;'>{species_row[col]}</span>", unsafe_allow_html=True)
         
         # Ana İçerik Sekmeleri
         tab_map, tab_details, tab_papers, tab_taxonomy = st.tabs([
@@ -694,7 +701,8 @@ def main():
                             <div style='padding: 0.8rem; margin: 0.5rem 0; 
                                         background: #f8f9fa; border-left: 3px solid #667eea;
                                         border-radius: 5px;'>
-                                <strong>{label}:</strong> {species_row[col]}
+                                <strong style='color: #2d3748;'>{label}:</strong> 
+                                <span style='color: #1a202c; font-weight: 500;'>{species_row[col]}</span>
                             </div>
                         """, unsafe_allow_html=True)
             
@@ -712,7 +720,8 @@ def main():
                             <div style='padding: 0.8rem; margin: 0.5rem 0; 
                                         background: #f8f9fa; border-left: 3px solid #764ba2;
                                         border-radius: 5px;'>
-                                <strong>{label}:</strong> {species_row[col]}
+                                <strong style='color: #2d3748;'>{label}:</strong> 
+                                <span style='color: #1a202c; font-weight: 500;'>{species_row[col]}</span>
                             </div>
                         """, unsafe_allow_html=True)
             
